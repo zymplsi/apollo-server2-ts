@@ -1,4 +1,4 @@
-import { coordinatesScalarType } from '../graphql-scalars';
+import { coordinatesScalarType } from '../../gql/custom-scalars';
 import { GraphQLScalarType, Kind } from 'graphql';
 
 export const schema = [
@@ -40,22 +40,7 @@ const data = [
 ];
 
 export const typeResolvers = {
-  Coordinates: new GraphQLScalarType({
-    name: 'Coordinates',
-    description: 'A set of coordinates. x, y',
-    parseValue(value) {
-      return value;
-    },
-    serialize(value) {
-      return value;
-    },
-    parseLiteral(ast) {
-      if (ast.kind === Kind.FLOAT) {
-        return ast.value
-      }
-      return null;
-    }
-  }),
+  Coordinates: coordinatesScalarType,
   PointGeometry: {
     type() {
       return 'Point';

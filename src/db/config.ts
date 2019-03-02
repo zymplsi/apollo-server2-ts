@@ -1,6 +1,6 @@
-import mongoose, { ConnectionOptions, Model, Document } from 'mongoose';
+import mongoose from 'mongoose';
 import { environment } from '../environment';
-import EstateSchema  from './schemas/estate';
+import GeoPointsSchema from './schemas/geo-points';
 
 const mongoOptions = {
   useNewUrlParser: true,
@@ -19,8 +19,8 @@ db.once('open', () => {
 });
 
 try {
-  db.model('estate');
+  db.model('geo-points');
 } catch (e) {
-  db.model('estate', EstateSchema);
+  db.model('geo-points', GeoPointsSchema);
 }
 export default db;

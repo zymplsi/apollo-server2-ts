@@ -1,7 +1,7 @@
 import { ApolloServer } from 'apollo-server';
 import { environment } from './environment';
 import db from './db/config';
-import executableSchema from './graphql-schema';
+import executableSchema from './gql/executable-schema';
 
 const server = new ApolloServer({
   schema: executableSchema,
