@@ -1,16 +1,13 @@
 import { ApolloServer } from 'apollo-server';
 import { environment } from './environment';
 import db from './db/config';
-import resolvers from './resolvers';
-import typeDefs from './schemas';
+import executableSchema from './graphql-schema';
 
 const server = new ApolloServer({
-  resolvers,
-  typeDefs,
+  schema: executableSchema,
   introspection: environment.apollo.introspection,
   playground: environment.apollo.playground
 });
-
 
 db.once('open', () => {
   server.listen(environment.port).then(({ url }) => {
