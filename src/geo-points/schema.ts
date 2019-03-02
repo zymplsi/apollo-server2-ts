@@ -1,5 +1,5 @@
 import { coordinatesScalarType } from '../graphql-scalars';
-import { GraphQLScalarType } from 'graphql';
+import { GraphQLScalarType, Kind } from 'graphql';
 
 export const schema = [
   `
@@ -9,26 +9,34 @@ export const schema = [
         type: String!
         coordinates: Coordinates!
       }
+
       type PointProps {
         id: Int!
         lat: Float
         lon: Float
       }
+
       type PointObject {
         type: String!
         geometry: PointGeometry
         properties: PointProps
       }
+
       type FeatureCollection {
         type: String!
         features: [PointObject]
       }
-    
 
     extend type Query {
      getGeoPointsByCategory: FeatureCollection!
     }    
   `
+];
+
+const data = [
+  { vehicleid: 1, latitude: 40.1, longitude: -76.5 },
+  { vehicleid: 2, latitude: 40.2, longitude: -76.6 },
+  { vehicleid: 3, latitude: 40.3, longitude: -76.7 }
 ];
 
 export const typeResolvers = {
@@ -42,25 +50,28 @@ export const typeResolvers = {
       return value;
     },
     parseLiteral(ast) {
-      return ast.kind;
+      if (ast.kind === Kind.FLOAT) {
+        return ast.value
+      }
+      return null;
     }
   }),
   PointGeometry: {
     type() {
       return 'Point';
     },
-    coordinates(item: { longitude: any; latitude: any; }) {
+    coordinates(item: { longitude: any; latitude: any }) {
       return [item.longitude, item.latitude];
     }
   },
   PointProps: {
-    id(item) {
+    id(item: { vehicleid: any }) {
       return item.vehicleid;
     },
-    lat(item) {
+    lat(item: { latitude: any }) {
       return item.latitude;
     },
-    lon(item) {
+    lon(item: { longitude: any }) {
       return item.longitude;
     }
   },
@@ -87,6 +98,6 @@ export const typeResolvers = {
 
 export const queryResolvers = {
   getGeoPointsByCategory: () => {
-    return  []
+    return data;
   }
 };
