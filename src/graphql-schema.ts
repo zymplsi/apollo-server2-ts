@@ -1,9 +1,10 @@
 import { makeExecutableSchema } from 'graphql-tools';
 import {
   schema as GeoPointsSchema,
-  resolvers as GeoPointsResolvers
+  typeResolvers as GeoPointsTypeResolvers,
+  queryResolvers as GeoPointsQueryResolvers
 } from './geo-points/schema';
-
+import { GraphQLScalarType } from 'graphql';
 
 const rootSchema = [
   `
@@ -19,17 +20,15 @@ const rootSchema = [
 const schema = [...rootSchema, ...GeoPointsSchema];
 
 const resolvers = {
+  ...GeoPointsTypeResolvers,
+
   Query: {
     testMessage: (): string => {
       return 'Hello World!';
-
     },
-    ...GeoPointsResolvers
+    ...GeoPointsQueryResolvers
   }
 };
-
-
-
 
 const executableSchema = makeExecutableSchema({
   typeDefs: schema,
