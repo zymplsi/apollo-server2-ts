@@ -1,0 +1,41 @@
+{
+  "name": "apollo-server2-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "private": true,
+  "scripts": {
+    "build": "webpack --watch --info-verbosity verbose --config webpack.$NODE_ENV.js",
+    "start:env": "node --require dotenv/config dist/server",
+    "start:db": "mongod --config /usr/local/etc/mongod.conf",
+    "test": "mocha --exit --require ts-node/register test/**/*.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/geojson": "^7946.0.6",
+    "@types/mocha": "^5.2.6",
+    "@types/mongoose": "^5.3.20",
+    "@types/webpack-env": "^1.13.7",
+    "chai": "^4.2.0",
+    "clean-webpack-plugin": "^1.0.1",
+    "dotenv": "^6.2.0",
+    "mocha": "^6.0.2",
+    "ts-loader": "^5.3.3",
+    "ts-node": "^8.0.2",
+    "typescript": "^3.3.3333",
+    "webpack": "^4.29.5",
+    "webpack-cli": "^3.2.3",
+    "webpack-merge": "^4.2.1",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "dependencies": {
+    "apollo-server": "^2.4.8",
+    "graphql": "^14.1.1",
+    "graphql-geojson": "^1.0.0",
+    "mongoose": "^5.4.16",
+    "mongoose-geojson-schemas": "^0.10.1"
+  }
+}
