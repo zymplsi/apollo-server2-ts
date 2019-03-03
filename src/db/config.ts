@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { environment } from '../environment';
-import GeoPointsSchema from './schemas/geo-points';
+import GeoPointsSchema from './schemas/geo-points.db.schema';
 
 const mongoOptions = {
   useNewUrlParser: true,

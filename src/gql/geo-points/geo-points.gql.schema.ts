@@ -1,5 +1,4 @@
-import { coordinatesScalarType } from '../../gql/custom-scalars';
-import { GraphQLScalarType, Kind } from 'graphql';
+import { coordinatesScalarType } from '../custom-scalars';
 
 export const schema = [
   `
@@ -83,6 +82,7 @@ export const typeResolvers = {
 
 export const queryResolvers = {
   getGeoPointsByCategory: () => {
+    console.log(data)
     return data;
   }
 };
