@@ -14,8 +14,14 @@
                 "dotenv/config",
                 "${workspaceFolder}/dist/server"
             ],
+            "cwd": "${workspaceFolder}",
+            "sourceMaps": true,
+            "sourceMapPathOverrides": {
+                "webpack:///./~/*": "${workspaceFolder}/node_modules/*",
+                "webpack:///./*": "${workspaceFolder}/*",
+                "webpack:///*": "*"
+            },
             "internalConsoleOptions": "openOnSessionStart",
-            "console": "integratedTerminal"
         },
   
         
