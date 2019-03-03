@@ -1,15 +1,21 @@
-import { GraphQLScalarType } from 'graphql';
+import { GraphQLScalarType, Kind } from 'graphql';
 
 export const coordinatesScalarType = new GraphQLScalarType({
     name: 'Coordinates',
     description: 'A set of coordinates. x, y',
-    parseValue(value) {
+    parseValue(value: any) {
       return value;
     },
-    serialize(value) {
+    serialize(value : any) {
       return value;
     },
     parseLiteral(ast) {
-      return ast.kind;
+      if(ast.kind === Kind.FLOAT){
+        return ast.value;
+      }else {
+        return null;
+      }
+
+  
     },
   })

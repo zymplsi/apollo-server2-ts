@@ -16,6 +16,7 @@
   "devDependencies": {
     "@types/chai": "^4.1.7",
     "@types/geojson": "^7946.0.6",
+    "@types/graphql": "^14.0.7",
     "@types/mocha": "^5.2.6",
     "@types/mongoose": "^5.3.20",
     "@types/webpack-env": "^1.13.7",
@@ -36,6 +37,7 @@
     "graphql": "^14.1.1",
     "graphql-geojson": "^1.0.0",
     "mongoose": "^5.4.16",
-    "mongoose-geojson-schemas": "^0.10.1"
+    "mongoose-geojson-schemas": "^0.10.1",
+    "mongoose-seed": "^0.6.0"
   }
 }

@@ -4,7 +4,7 @@ import {
   typeResolvers as GeoPointsTypeResolvers,
   queryResolvers as GeoPointsQueryResolvers
 } from './geo-points/geo-points.gql.schema';
-import { GraphQLScalarType } from 'graphql';
+
 
 const rootSchema = [
   `
