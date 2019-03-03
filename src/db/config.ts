@@ -19,8 +19,8 @@ db.once('open', () => {
 });
 
 try {
-  db.model('geo-points');
+  db.model('geopoints');
 } catch (e) {
-  db.model('geo-points', GeoPointsSchema);
+  db.model('geopoints', GeoPointsSchema);
 }
 export default db;

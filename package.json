@@ -8,13 +8,15 @@
     "build": "webpack --watch --info-verbosity verbose --config webpack.$NODE_ENV.js",
     "start:env": "node --require dotenv/config dist/server",
     "start:db": "mongod --config /usr/local/etc/mongod.conf",
-    "test": "mocha --exit --require ts-node/register test/**/*.ts"
+    "test": "mocha --exit --require ts-node/register test/**/*.ts",
+    "seed": "ts-node seed/loadSeed.ts "
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@types/chai": "^4.1.7",
+    "@types/dotenv": "^6.1.0",
     "@types/geojson": "^7946.0.6",
     "@types/graphql": "^14.0.7",
     "@types/mocha": "^5.2.6",
@@ -37,7 +39,6 @@
     "graphql": "^14.1.1",
     "graphql-geojson": "^1.0.0",
     "mongoose": "^5.4.16",
-    "mongoose-geojson-schemas": "^0.10.1",
-    "mongoose-seed": "^0.6.0"
+    "mongoose-geojson-schemas": "^0.10.1"
   }
 }
