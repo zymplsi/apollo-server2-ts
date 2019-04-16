@@ -1,25 +1,25 @@
-import express from "express";
-import morgan from "morgan";
-import cors from 'cors';
-import passport from "passport";
-import { BearerStrategy } from "passport-azure-ad";
-import { ApolloServer } from "apollo-server-express";
-import { environment } from "./environment";
-import db from "./db/config";
-import executableSchema from "./gql/schemas/executable-schema";
-import AdB2cGraphAPI from "./gql/datasources/adb2c-graph.datasource";
+import express = require('express');
+import morgan = require('morgan');
+import cors = require('cors');
+import passport = require('passport');
+import { BearerStrategy } from 'passport-azure-ad';
+import { ApolloServer } from 'apollo-server-express';
+import { environment } from './environment';
+import db from './db/mongo/config';
+import executableSchema from './gql/schemas/executable-schema';
+import AdB2cGraphAPI from './gql/datasources/adb2c-graph.datasource';
 
 
 
-const tenantID = "wwfsghaltproj.onmicrosoft.com";
-const clientID = "6d0235c2-54ec-4436-9a50-7bc68f07c8ba";
-const policyName = "b2c_1_susi_std";
+const tenantID = 'wwfsghaltproj.onmicrosoft.com';
+const clientID = '6d0235c2-54ec-4436-9a50-7bc68f07c8ba';
+const policyName = 'b2c_1_susi_std';
 
 const options = {
   identityMetadata:
-    "https://wwfsghaltproj.b2clogin.com/" +
+    'https://wwfsghaltproj.b2clogin.com/' +
     tenantID +
-    "/v2.0/.well-known/openid-configuration/",
+    '/v2.0/.well-known/openid-configuration/',
   clientID: clientID,
   policyName: policyName,
   isB2C: true,
@@ -33,8 +33,9 @@ const bearerStrategy = new BearerStrategy(options, function(token, done) {
   done(null, {}, token);
 });
 
+
 const app = express();
-app.use(morgan("dev"));
+app.use(morgan('dev'));
 
 app.use(passport.initialize());
 passport.use(bearerStrategy);
@@ -42,8 +43,8 @@ passport.use(bearerStrategy);
 
 app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 app.use(
-  "/api",
-  passport.authenticate("oauth-bearer", { session: false }),
+  '/api',
+  passport.authenticate('oauth-bearer', { session: false }),
   function(req, res, next) {
     var claims = req.authInfo;
     req.user = {
@@ -51,11 +52,11 @@ app.use(
       emails: claims.emails,
       name: claims.name
     }
-    if (claims["scp"].split(" ").indexOf("read") >= 0) {
+    if (claims['scp'].split(' ').indexOf('read') >= 0) {
       next();
     } else {
-      console.log("Invalid Scope, 403");
-      res.status(403).json({ error: "insufficient_scope" });
+      console.log('Invalid Scope, 403');
+      res.status(403).json({ error: 'insufficient_scope' });
     }
   }
 );
@@ -85,9 +86,9 @@ const server = new ApolloServer({
 });
 
 
-server.applyMiddleware({ app, path: "/api" }); // app is from an existing express app
+server.applyMiddleware({ app, path: '/api' }); // app is from an existing express app
 
-db.once("open", () => {
+db.once('open', () => {
   app.listen({ port: environment.port }, () =>
     console.log(
       `🚀 Connected to database and Server ready at http://localhost:4000${

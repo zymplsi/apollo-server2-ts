@@ -26,21 +26,24 @@
       "@types/passport-azure-ad": "^4.0.2",
       "@types/request": "^2.48.1",
       "@types/webpack-env": "^1.13.7",
+      "@typescript-eslint/eslint-plugin": "^1.6.0",
+      "@typescript-eslint/parser": "^1.6.0",
       "chai": "^4.2.0",
       "clean-webpack-plugin": "^1.0.1",
       "dotenv": "^6.2.0",
+      "eslint": "^5.16.0",
+      "eslint-config-prettier": "^4.1.0",
+      "eslint-plugin-prettier": "^3.0.1",
       "mocha": "^6.0.2",
       "ts-loader": "^5.3.3",
       "ts-node": "3.3.0",
-      "typescript": "2.5.2",
+      "typescript": "^3.4.3",
       "webpack": "^4.29.5",
       "webpack-cli": "^3.2.3",
       "webpack-merge": "^4.2.1",
-      "webpack-node-externals": "^1.7.2",
-      "@types/node": "^8.0.29"
+      "webpack-node-externals": "^1.7.2"
    },
    "dependencies": {
-      "@types/node": "^11.13.4",
       "adal-node": "^0.1.28",
       "apollo-datasource-rest": "^0.3.2",
       "apollo-server": "^2.4.8",
@@ -58,7 +61,6 @@
       "reflect-metadata": "^0.1.10",
       "request": "^2.88.0",
       "stream-to-blob": "^1.0.1",
-      "typeorm": "0.2.16",
-      "mysql": "^2.14.1"
+      "typeorm": "0.2.16"
    }
 }

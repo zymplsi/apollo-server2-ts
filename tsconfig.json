@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["es5", "es6"],
+    "lib": ["es7", "es6"],
     "target": "es6",
     "module": "commonjs",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports" : true,
     "moduleResolution": "node",
     "outDir": "./dist",
     "emitDecoratorMetadata": true,
@@ -10,15 +12,17 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "removeComments": true,
-    "strict": true,
     "baseUrl": ".",
+    "noImplicitAny": true,
     "paths": {
-      "mongoose-geojson-schemas": ["./typings/mongoose-geojson-schemas"]
+      "*": [
+        "*",
+      ],
+      "mongoose-geojson-schemas": ["./typings/mongoose-geojson-schemas"],
+      "json": ["./typings/json"]
     },
-
-    "typeRoots": ["./node_modules/@types", "./typings"],
-    "esModuleInterop": true
+    "typeRoots": ["./node_modules/@types", "./typings"]
   },
-  "include": ["seed"],
+  "include": ["seed", "src/**/*"],
   "exclude": ["node_modules"]
 }

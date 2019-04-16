@@ -1,7 +1,8 @@
-import mongoose, { Connection, Model } from 'mongoose';
+import  mongoose = require('mongoose');
+import { Connection, Model } from 'mongoose';
 import { assert } from 'chai';
-import GeoPointsSchema from '../../src/db/schemas/geo-points.db.schema';
-import { GeoPointDocument } from '../../src/db/types/index.types';
+import GeoPointsSchema from '../../src/db/mongo/schemas/geo-points.db.schema';
+import { GeoPointDocument } from '../../src/db/mongo/types/index.types';
 
 let mongoHost: string | undefined;
 let mongoDb: string | undefined;
