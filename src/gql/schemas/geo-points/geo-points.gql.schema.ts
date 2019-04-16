@@ -1,4 +1,4 @@
-import { coordinatesScalarType } from '../custom-scalars';
+import { coordinatesScalarType } from './custom-scalars';
 
 export const schema = [
   `
