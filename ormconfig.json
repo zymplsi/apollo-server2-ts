@@ -1,23 +1,23 @@
 {
    "type": "mssql",
-   "host": "localhost",
-   "username": "sa",
-   "password": "Admin12345",
-   "database": "tempdb",
+   "host": "haltappdb.database.windows.net",
+   "username": "halltapp_db_admin",
+   "password": "P@ssword",
+   "database": "haltappdevdb",
    "synchronize": true,
    "logging": false,
-   "entities": [
-      "src/db/mssql/entity/**/*.ts"
-   ],
+   "options" : {
+      "encrypt" : true
+   },
    "migrations": [
-      "src/db/mssql/migration/**/*.ts"
+      "src/migration/**/*.ts"
    ],
    "subscribers": [
-      "src/db/mssql/subscriber/**/*.ts"
+      "src/subscriber/**/*.ts"
    ],
    "cli": {
       "entitiesDir": "src/db/mssql/entity",
-      "migrationsDir": "src/db/mssql/migration",
-      "subscribersDir": "src/db/mssql/subscriber"
+      "migrationsDir": "src/migration",
+      "subscribersDir": "src/subscriber"
    }
 }
